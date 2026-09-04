@@ -5,8 +5,9 @@
 :root{
   --cream:         #faf3ea;
   --cream-soft:    #f3e8da;
-  --terracotta:    #c2703f;
-  --terracotta-deep:#9c5530;
+  --terracotta:    #b8663a;
+  --terracotta-deep:#8a4a28;
+  --coffee-deep:   #5c3a24;
   --blush:         #f3d8ce;
   --sage:          #5f7a4f;
   --sage-deep:     #445a38;
@@ -143,7 +144,6 @@ h1,h2,h3{ font-family:var(--font-display); font-weight:700; }
 .carta-section{ background:var(--ink); color:var(--cream); padding:88px 0; }
 .carta-section .section-title{ color:var(--cream); }
 .carta-section .kicker{ color:var(--blush); }
-.carta-price-hint{ font-size:.85rem; color:rgba(250,243,234,.55); margin-top:-8px; margin-bottom:40px; text-align:center; }
 .menu-tabs{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:44px; }
 .menu-tab{
   border:1.5px solid rgba(250,243,234,.3); color:rgba(250,243,234,.75); padding:9px 18px; font-size:.78rem;
@@ -151,17 +151,41 @@ h1,h2,h3{ font-family:var(--font-display); font-weight:700; }
 }
 .menu-tab:hover{ border-color:var(--terracotta); color:var(--terracotta); }
 .menu-tab.active{ background:var(--terracotta); border-color:var(--terracotta); color:var(--cream); }
-.menu-panel{ display:none; animation:fadeInPanel .3s ease; }
-.menu-panel.active{ display:block; }
-.menu-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0 60px; }
-@media(max-width:760px){ .menu-grid{ grid-template-columns:1fr; gap:0; } }
-.menu-cat{ margin-bottom:32px; }
+.menu-panel{ animation:fadeInPanel .3s ease; }
+.menu-cat{ margin-bottom:40px; }
 .menu-cat h3{ font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--blush); margin-bottom:18px; font-weight:700; }
-.menu-item{ padding:9px 0; border-bottom:1px dotted rgba(250,243,234,.15); }
-.menu-item .row{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; }
-.menu-item .name{ font-size:.95rem; }
-.menu-item .price{ color:var(--terracotta); font-weight:700; white-space:nowrap; }
-.menu-item .desc{ display:block; font-size:.78rem; color:rgba(250,243,234,.5); margin-top:2px; }
+
+.menu-cards{ display:grid; gap:18px; grid-template-columns:1fr; }
+@media(min-width:640px){ .menu-cards{ grid-template-columns:1fr 1fr; } }
+@media(min-width:1000px){ .menu-cards{ grid-template-columns:repeat(3,1fr); } }
+.menu-card{
+  text-align:left; background:rgba(250,243,234,.06); border:1px solid rgba(250,243,234,.1);
+  border-radius:8px; padding:18px; display:flex; flex-direction:column; gap:14px;
+  transition:transform .25s ease, background-color .2s ease;
+}
+.menu-card:hover{ transform:translateY(-3px); background:rgba(250,243,234,.1); }
+.menu-card-photo{ width:100%; height:110px; border-radius:6px; overflow:hidden; }
+.menu-card-photo svg{ display:block; }
+.menu-card-body h4{ font-family:var(--font-display); font-size:1.1rem; margin:0 0 .3rem; color:var(--cream); }
+.menu-card-body p{ font-size:.82rem; line-height:1.5; color:rgba(250,243,234,.55); margin:0; }
+.menu-card-bottom{ margin-top:auto; display:flex; align-items:center; justify-content:space-between; }
+.menu-card-price{ font-weight:700; color:var(--terracotta); font-size:1.05rem; }
+.menu-card-cta{ font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:rgba(250,243,234,.4); }
+
+.menu-extras{ display:flex; flex-direction:column; max-width:420px; }
+.menu-extra-item{ display:flex; justify-content:space-between; gap:14px; padding:9px 0; border-bottom:1px dotted rgba(250,243,234,.15); font-size:.9rem; }
+.menu-extra-item .price{ color:var(--terracotta); font-weight:700; white-space:nowrap; }
+
+/* ===================== PRODUCT MODAL ===================== */
+.modal-overlay{ position:fixed; inset:0; background:rgba(58,42,30,.6); z-index:170; align-items:center; justify-content:center; padding:20px; }
+.modal-overlay.hidden{ display:none; }
+.modal-overlay:not(.hidden){ display:flex; }
+.modal-box{ background:var(--cream); max-width:380px; width:100%; border-radius:10px; padding:28px; position:relative; }
+.modal-close{ position:absolute; top:14px; right:14px; color:rgba(58,42,30,.5); }
+.modal-photo{ width:100%; height:150px; border-radius:8px; overflow:hidden; margin-bottom:16px; }
+.modal-name{ font-size:1.5rem; color:var(--terracotta-deep); margin:0 0 .5rem; }
+.modal-desc{ font-size:.92rem; color:var(--gray); line-height:1.6; margin:0 0 14px; }
+.modal-price{ font-weight:700; font-size:1.2rem; color:var(--terracotta); }
 
 /* ===================== RESEÑAS ===================== */
 .resenas-section{ background:var(--cream-soft); padding:88px 0; }
@@ -193,16 +217,16 @@ h1,h2,h3{ font-family:var(--font-display); font-weight:700; }
 .destacadas-note a{ color:var(--terracotta-deep); font-weight:700; }
 
 /* ===================== VISITANOS ===================== */
-.visit-section{ background:var(--sage-deep); color:var(--cream); padding:88px 0; }
+.visit-section{ background:var(--coffee-deep); color:var(--cream); padding:88px 0; }
 .visit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; }
 @media(max-width:820px){ .visit-grid{ grid-template-columns:1fr; gap:36px; } }
 .visit-block{ margin-bottom:26px; }
 .visit-block h3{ font-size:.95rem; margin-bottom:6px; color:var(--blush); }
 .visit-block p{ line-height:1.7; color:rgba(250,243,234,.85); margin:0; }
-.hours-list{ font-size:.88rem; display:flex; flex-direction:column; gap:6px; margin-top:4px; }
+.hours-list{ font-size:.88rem; display:flex; flex-direction:column; gap:6px; margin-top:4px; padding-bottom:18px; border-bottom:1px solid rgba(250,243,234,.15); }
 .hours-list div{ display:flex; justify-content:space-between; gap:16px; color:rgba(250,243,234,.85); max-width:280px; }
 .open-badge{
-  margin-top:14px; display:inline-flex; align-items:center; gap:8px; font-size:.8rem; text-transform:uppercase;
+  margin-top:22px; display:inline-flex; align-items:center; gap:8px; font-size:.8rem; text-transform:uppercase;
   letter-spacing:.05em; padding:7px 15px; border-radius:999px; font-weight:700;
   border:1px solid rgba(250,243,234,.35); color:var(--cream); background:rgba(250,243,234,.06);
 }
@@ -212,6 +236,7 @@ h1,h2,h3{ font-family:var(--font-display); font-weight:700; }
 .services{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
 .services span{ background:rgba(250,243,234,.12); padding:6px 14px; border-radius:20px; font-size:.78rem; }
 .visit-ctas{ display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; }
+.order-note{ margin-top:14px; font-size:.8rem; color:rgba(250,243,234,.5); }
 .map-frame{ border-radius:10px; overflow:hidden; border:1px solid rgba(250,243,234,.2); aspect-ratio:4/3; }
 .map-frame iframe{ width:100%; height:100%; border:0; }
 
