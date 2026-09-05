@@ -114,13 +114,16 @@ h1,h2,h3{ font-family:var(--font-display); font-weight:700; }
   position:relative; min-height:88vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
   text-align:center; padding:60px 24px; background:linear-gradient(180deg, var(--blush), var(--cream) 72%); overflow:hidden;
 }
-.hero-badge{ width:100px; height:100px; border-radius:50%; margin-bottom:22px; box-shadow:0 10px 30px -10px rgba(156,85,48,.4); }
-.hero-eyebrow{ font-family:var(--font-hand); font-size:1.7rem; color:var(--sage-deep); margin-bottom:4px; }
-.hero h1{ font-size:clamp(2.8rem,9vw,4.8rem); line-height:1; color:var(--terracotta-deep); margin:0; }
-.hero-tagline{ max-width:520px; margin:22px auto 30px; font-size:1.05rem; line-height:1.75; color:var(--gray); }
-.hero-info{ display:flex; flex-wrap:wrap; gap:26px; justify-content:center; font-size:.82rem; color:var(--ink); margin-bottom:34px; }
+.hero-bg-photo{ position:absolute; inset:0; opacity:0.4; }
+.hero-bg-photo img{ width:100%; height:100%; object-fit:cover; }
+.hero-bg-photo::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(249,222,215,0.25), var(--cream) 88%); }
+.hero-badge{ position:relative; z-index:2; width:100px; height:100px; border-radius:50%; margin-bottom:22px; box-shadow:0 10px 30px -10px rgba(156,85,48,.4); }
+.hero-eyebrow{ position:relative; z-index:2; font-family:var(--font-hand); font-size:1.7rem; color:var(--sage-deep); margin-bottom:4px; }
+.hero h1{ position:relative; z-index:2; font-size:clamp(2.8rem,9vw,4.8rem); line-height:1; color:var(--terracotta-deep); margin:0; }
+.hero-tagline{ position:relative; z-index:2; max-width:520px; margin:22px auto 30px; font-size:1.05rem; line-height:1.75; color:var(--gray); }
+.hero-info{ position:relative; z-index:2; display:flex; flex-wrap:wrap; gap:26px; justify-content:center; font-size:.82rem; color:var(--ink); margin-bottom:34px; }
 .hero-info strong{ display:block; color:var(--terracotta-deep); font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px; }
-.hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
+.hero-ctas{ position:relative; z-index:2; display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
 
 /* ===================== NOSOTROS ===================== */
 .nosotros-section{ background:var(--cream); padding:88px 0; }
