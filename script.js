@@ -212,6 +212,8 @@ modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) clo
 const PLACE_ID = '0x9662c5601ff670bf:0x11ca0986d1f96b8a';
 document.getElementById('reviews-link').href = `https://search.google.com/local/writereview?placeid=${PLACE_ID}`;
 document.getElementById('directions-link').href = `https://www.google.com/maps/dir/?api=1&destination=Filtra2+Cafe&destination_place_id=${PLACE_ID}`;
+/* Coordenadas reales de la misma ficha (las del embed del mapa). */
+document.getElementById('waze-link').href = 'https://waze.com/ul?ll=-33.4428307,-70.6384584&navigate=yes';
 
 /* ===================== HORARIO / ABIERTO-CERRADO ===================== */
 /* Horario real verificado en Google Maps (ficha "FILTRA2 CAFE"). */
