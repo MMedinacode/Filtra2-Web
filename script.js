@@ -216,12 +216,13 @@ document.getElementById('directions-link').href = `https://www.google.com/maps/d
 document.getElementById('waze-link').href = 'https://waze.com/ul?ll=-33.4428307,-70.6384584&navigate=yes';
 
 /* ===================== HORARIO / ABIERTO-CERRADO ===================== */
-/* Horario real verificado en Google Maps (ficha "FILTRA2 CAFE"). */
+/* Horario de su destacada «Horarios» de Instagram (06-07-2026), revisada el
+   02-10-2026: L-V 7:30-18:00, sábado 9:40-15:00. Google decía 18:20. */
 const DIAS = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 const HOURS = {
   0: null,
-  1: { open: 7.5, close: 18 + 20/60 }, 2: { open: 7.5, close: 18 + 20/60 }, 3: { open: 7.5, close: 18 + 20/60 },
-  4: { open: 7.5, close: 18 + 20/60 }, 5: { open: 7.5, close: 18 + 20/60 },
+  1: { open: 7.5, close: 18 }, 2: { open: 7.5, close: 18 }, 3: { open: 7.5, close: 18 },
+  4: { open: 7.5, close: 18 }, 5: { open: 7.5, close: 18 },
   6: { open: 9 + 40/60, close: 15 }
 };
 
